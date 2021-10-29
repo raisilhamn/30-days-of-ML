@@ -35,6 +35,19 @@ melbourne_data.describe()
 ## Your First Machine Learning Model
 
 To choose variables/columns, we'll need to see a list of all columns in the dataset. That is done with the columns property of the DataFrame (the bottom line of code below).
+```python
+import pandas as pd
 
-<iframe src="https://www.kaggle.com/embed/dansbecker/your-first-machine-learning-model?cellIds=2&kernelSessionId=74685890" height="300" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Your First Machine Learning Model"></iframe>
+melbourne_file_path = '../input/melbourne-housing-snapshot/melb_data.csv'
+melbourne_data = pd.read_csv(melbourne_file_path) 
+melbourne_data.columns
+```
+
+```markdown
+Index(['Suburb', 'Address', 'Rooms', 'Type', 'Price', 'Method', 'SellerG',
+       'Date', 'Distance', 'Postcode', 'Bedroom2', 'Bathroom', 'Car',
+       'Landsize', 'BuildingArea', 'YearBuilt', 'CouncilArea', 'Lattitude',
+       'Longtitude', 'Regionname', 'Propertycount'],
+      dtype='object')
+```
 
