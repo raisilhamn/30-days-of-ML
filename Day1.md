@@ -1,6 +1,15 @@
 # Day 1
 
-## Sumber
+- [Day 1](#day-1)
+  - [How Models Work](#how-models-work)
+    - [keypoints](#keypoints)
+  - [Basic Data Exploration](#basic-data-exploration)
+  - [Your First Machine Learning Model](#your-first-machine-learning-model)
+    - [Selecting The Prediction Target](#selecting-the-prediction-target)
+    - [Choosing "Features"](#choosing-features)
+    - [Building Your Model](#building-your-model)
+  - [Model Validation](#model-validation)
+    - [What is Model Validation ?](#what-is-model-validation-)
 
 ## How Models Work
 
@@ -35,6 +44,9 @@ melbourne_data.describe()
 ```
 
 ## Your First Machine Learning Model
+
+- [Your First Machine Learning Model](https://www.kaggle.com/dansbecker/your-first-machine-learning-model/tutorial)
+  > Building your first model. Hurray!
 
 We'll start by picking a few variables using our intuition. Later courses will show you statistical techniques to automatically prioritize variables.
 
@@ -142,4 +154,72 @@ Making predictions for the following 5 houses:
 7      2       1.0     256.0   -37.8060    144.9954
 The predictions are
 [1035000. 1465000. 1600000. 1876000. 1636000.]
+```
+
+## Model Validation
+
+Measure the performance of your model, so you can test and compare alternatives.
+
+### What is Model Validation ?
+
+Many people make a huge mistake when measuring predictive accuracy. **They make predictions with their _training data_ and compare those predictions to the target values in the _training data_.** You'll see the problem with this approach and how to solve it in a moment, but let's think about how we'd do this first.
+
+You'd first need to summarize the model quality into an understandable way. If you compare predicted and actual home values for 10,000 houses, you'll likely find mix of good and bad predictions. Looking through a list of 10,000 predicted and actual values would be pointless. We need to summarize this into a single metric.
+
+There are many metrics for summarizing model quality, but we'll start with one called **Mean Absolute Error** (also called MAE). Let's break down this metric starting with the last word, error.
+
+The prediction error for each house is:
+
+```markdown
+error = actual − predicted
+```
+
+So, if a house cost 150,000 and you predicted it would cost 100,000 the error is 50,000.
+
+With the MAE metric, we take the absolute value of each error. This converts each error to a positive number. We then take the average of those absolute errors. This is our measure of model quality. In plain English, it can be said as
+
+> On average, our predictions are off by about X.
+
+code :
+
+```python
+import pandas as pd
+
+# Load data
+melbourne_file_path = '../input/melbourne-housing-snapshot/melb_data.csv'
+melbourne_data = pd.read_csv(melbourne_file_path) 
+
+# Filter rows with missing price values
+filtered_melbourne_data = melbourne_data.dropna(axis=0)
+
+# Choose target and features
+y = filtered_melbourne_data.Price
+melbourne_features = ['Rooms', 'Bathroom', 'Landsize', 'BuildingArea', 
+                        'YearBuilt', 'Lattitude', 'Longtitude']
+X = filtered_melbourne_data[melbourne_features]
+
+from sklearn.tree import DecisionTreeRegressor
+# Define model
+melbourne_model = DecisionTreeRegressor()
+# Fit model
+melbourne_model.fit(X, y)
+```
+
+```markdown
+# output
+DecisionTreeRegressor()
+```
+
+Once we have a model, here is how we calculate the mean absolute error:
+
+```python
+from sklearn.metrics import mean_absolute_error
+
+predicted_home_prices = melbourne_model.predict(X)
+mean_absolute_error(y, predicted_home_prices)
+```
+
+```markdown
+# output
+434.71594577146544
 ```
