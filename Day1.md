@@ -10,6 +10,8 @@
     - [Building Your Model](#building-your-model)
   - [Model Validation](#model-validation)
     - [What is Model Validation ?](#what-is-model-validation-)
+    - [Latihan](#latihan)
+      - [The Importance of Data Splitting](#the-importance-of-data-splitting)
 
 ## How Models Work
 
@@ -22,7 +24,7 @@
 - The data used to **fit** the model is called the **training data**.
 - After the model has been fit, you can apply it to new data to **predict**.
 ![example](http://i.imgur.com/R3ywQsR.png)
-- The point at the bottom where we make a prediction is called a leaf.
+- The point at the bottom where we make a prediction is called a **leaf**.
 
 ## Basic Data Exploration
 
@@ -162,6 +164,8 @@ Measure the performance of your model, so you can test and compare alternatives.
 
 ### What is Model Validation ?
 
+> penting
+
 Many people make a huge mistake when measuring predictive accuracy. **They make predictions with their _training data_ and compare those predictions to the target values in the _training data_.** You'll see the problem with this approach and how to solve it in a moment, but let's think about how we'd do this first.
 
 You'd first need to summarize the model quality into an understandable way. If you compare predicted and actual home values for 10,000 houses, you'll likely find mix of good and bad predictions. Looking through a list of 10,000 predicted and actual values would be pointless. We need to summarize this into a single metric.
@@ -223,3 +227,20 @@ mean_absolute_error(y, predicted_home_prices)
 # output
 434.71594577146544
 ```
+
+### Latihan
+
+Menggunakan _train_test_split_ dari sklearn
+> [Dokumentasi](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+> [Demo](https://realpython.com/train-test-split-python-data/)
+
+train test split digunakan agar prediksi tidak bias.
+> you can split your dataset into subsets that minimize the potential for bias in your evaluation and validation process.
+
+#### The Importance of Data Splitting
+
+Supervised machine learning is about creating models that precisely map the given inputs (independent variables, or predictors) to the given outputs (dependent variables, or responses).
+
+What’s most important to understand is that you usually need unbiased evaluation to properly use these measures, assess the predictive performance of your model, and validate the model.
+
+This means that you can’t evaluate the predictive performance of a model with the same data you used for training. You need evaluate the model with fresh data that hasn’t been seen by the model before. You can accomplish that by splitting your dataset before you use it.
