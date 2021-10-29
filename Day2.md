@@ -4,7 +4,7 @@
   - [Underfitting and Overfitting](#underfitting-and-overfitting)
     - [Experimenting With Different Models](#experimenting-with-different-models)
     - [Example](#example)
-  - [Kesimpulan](#kesimpulan)
+    - [Kesimpulan](#kesimpulan)
 
 ## Underfitting and Overfitting
 
@@ -91,11 +91,11 @@ Max leaf nodes: 5000     Mean Absolute Error:  254983
 
 Of the options listed, 500 is the optimal number of leaves.
 
-## Kesimpulan
+### Kesimpulan
 
 Here's the takeaway: Models can suffer from either:
 
 - **_Overfitting_** :  capturing spurious patterns that won't recur in the future, leading to less accurate predictions,
-- **_Underfitting_** : failing to capture relevant patterns, again leading to less accurate predictions. 
+- **_Underfitting_** : failing to capture relevant patterns, again leading to less accurate predictions.
 
 We use validation data, which isn't used in model training, to measure a candidate model's accuracy. This lets us try many candidate models and keep the best one.
