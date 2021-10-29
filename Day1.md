@@ -49,6 +49,7 @@ melbourne_data.columns
 ```
 
 ```markdown
+# output
 Index(['Suburb', 'Address', 'Rooms', 'Type', 'Price', 'Method', 'SellerG',
        'Date', 'Distance', 'Postcode', 'Bedroom2', 'Bathroom', 'Car',
        'Landsize', 'BuildingArea', 'YearBuilt', 'CouncilArea', 'Lattitude',
@@ -62,7 +63,6 @@ sementara ini kita drop dulu data yang hilang
 ```python
 melbourne_data = melbourne_data.dropna(axis=0)
 # menghapus baris yang memiliki NA
-
 ```
 
 > axis=0 (or axis='rows' is horizontal axis. axis=1 (or axis='columns') is vertical axis. To take it further, if you use pandas method drop, to remove columns or rows, if you specify axis=1 you will be removing columns. If you specify axis=0 you will be removing rows from dataset.
@@ -112,8 +112,34 @@ melbourne_model = DecisionTreeRegressor(random_state=1)
 # Fit model
 melbourne_model.fit(X, y)
 ```
+
 ```markdown
 # output
-DecisionTreeRegressor(random_state=1
+DecisionTreeRegressor(random_state=1)
 ```
 
+Many machine learning models allow some randomness in model training. Specifying a number for random_state ensures you get the same results in each run. This is considered a good practice. You use any number, and model quality won't depend meaningfully on exactly what value you choose.
+
+We now have a fitted model that we can use to make predictions.
+
+In practice, you'll want to make predictions for new houses coming on the market rather than the houses we already have prices for. But we'll make predictions for the first few rows of the training data to see how the predict function works.
+
+```python
+print("Making predictions for the following 5 houses:")
+print(X.head())
+print("The predictions are")
+print(melbourne_model.predict(X.head()))
+```
+
+```markdown
+# output
+Making predictions for the following 5 houses:
+   Rooms  Bathroom  Landsize  Lattitude  Longtitude
+1      2       1.0     156.0   -37.8079    144.9934
+2      3       2.0     134.0   -37.8093    144.9944
+4      4       1.0     120.0   -37.8072    144.9941
+6      3       2.0     245.0   -37.8024    144.9993
+7      2       1.0     256.0   -37.8060    144.9954
+The predictions are
+[1035000. 1465000. 1600000. 1876000. 1636000.]
+```
