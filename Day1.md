@@ -244,3 +244,68 @@ Supervised machine learning is about creating models that precisely map the give
 What’s most important to understand is that you usually need unbiased evaluation to properly use these measures, assess the predictive performance of your model, and validate the model.
 
 This means that you can’t evaluate the predictive performance of a model with the same data you used for training. You need evaluate the model with fresh data that hasn’t been seen by the model before. You can accomplish that by splitting your dataset before you use it.
+
+```python
+>>> x_train, x_test, y_train, y_test = train_test_split(x, y)
+>>> x_train
+array([[15, 16],
+       [21, 22],
+       [11, 12],
+       [17, 18],
+       [13, 14],
+       [ 9, 10],
+       [ 1,  2],
+       [ 3,  4],
+       [19, 20]])
+>>> x_test
+array([[ 5,  6],
+       [ 7,  8],
+       [23, 24]])
+>>> y_train
+array([1, 1, 0, 1, 0, 1, 0, 1, 0])
+>>> y_test
+array([1, 0, 0])
+```
+
+Given two sequences, like x and y here, train_test_split() performs the split and returns four sequences (in this case NumPy arrays) in this order:
+
+- x_train: The training part of the first sequence (x)
+- x_test: The test part of the first sequence (x)
+- y_train: The training part of the second sequence (y)
+- y_test: The test part of the second sequence (y)
+
+You probably got different results from what you see here. This is because dataset splitting is random by default. The result differs each time you run the function. However, this often isn’t what you want.
+
+The figure below shows what’s going on when you call `train_test_split()`:
+.
+<img src="https://files.realpython.com/media/fig-1.c489adc748c8.png" width=50% height=50%>
+
+You can see that y has six zeros and six ones. However, the test set has three zeros out of four items. If you want to (approximately) keep the proportion of y values through the training and test sets, then pass stratify=y. This will enable stratified splitting:
+
+```python
+>>> x_train, x_test, y_train, y_test = train_test_split( x, y, test_size=0.33,  
+      random_state=4, stratify=y)
+
+>>> x_train
+array([[21, 22],
+       [ 1,  2],
+       [15, 16],
+       [13, 14],
+       [17, 18],
+       [19, 20],
+       [23, 24],
+       [ 3,  4]])
+>>> x_test
+array([[11, 12],
+       [ 7,  8],
+       [ 5,  6],
+       [ 9, 10]])
+>>> y_train
+array([1, 0, 1, 0, 1, 0, 0, 1])
+>>> y_test
+array([0, 0, 1, 1])
+```
+
+Now y_train and y_test have the same ratio of zeros and ones as the original y array.
+
+Stratified splits are desirable in some cases, like when you’re classifying an imbalanced dataset, a dataset with a significant difference in the number of samples that belong to distinct classes.
