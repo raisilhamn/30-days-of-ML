@@ -277,6 +277,7 @@ Given two sequences, like x and y here, train_test_split() performs the split an
 You probably got different results from what you see here. This is because dataset splitting is random by default. The result differs each time you run the function. However, this often isn’t what you want.
 
 The figure below shows what’s going on when you call `train_test_split()`:
+
 .
 <img src="https://files.realpython.com/media/fig-1.c489adc748c8.png" width=35% height=35%>
 
