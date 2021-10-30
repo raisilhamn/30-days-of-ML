@@ -278,7 +278,7 @@ You probably got different results from what you see here. This is because datas
 
 The figure below shows what’s going on when you call `train_test_split()`:
 .
-<img src="https://files.realpython.com/media/fig-1.c489adc748c8.png" width=25% height=25%>
+<img src="https://files.realpython.com/media/fig-1.c489adc748c8.png" width=35% height=35%>
 
 You can see that y has six zeros and six ones. However, the test set has three zeros out of four items. If you want to (approximately) keep the proportion of y values through the training and test sets, then pass stratify=y. This will enable stratified splitting:
 
