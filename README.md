@@ -1,6 +1,6 @@
 # 30-days-of-ML
 
-## learning resources
+## Learning resources
 
 - Kaggle 30 Days of ML - Assignments (<https://www.kaggle.com/thirty-days-of-ml-assignments>) (**Free**)
 - Kaggle Free course (<https://www.kaggle.com/learn>) (**Free**)
@@ -15,3 +15,8 @@
 - Roadmap (<https://github.com/mrdbourke/machine-learning-roadmap>)
 - Yet another roadmap (<https://i.am.ai/roadmap/>)
 - Fast.ai (<https://www.fast.ai/>)
+- Data science Python notebooks (<https://github.com/donnemartin/data-science-ipython-notebooks>)
+- Machine Learning From Scratch (<https://github.com/eriklindernoren/ML-From-Scratch>)
+- Awesome Data Science (<https://github.com/academic/awesome-datascience>)
+
+
