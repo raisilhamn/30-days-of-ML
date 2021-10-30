@@ -309,4 +309,4 @@ array([0, 0, 1, 1])
 
 Now y_train and y_test have the same ratio of zeros and ones as the original y array.
 
-Stratified splits are desirable in some cases, like when you’re classifying an imbalanced dataset, a dataset with a significant difference in the number of samples that belong to distinct classes.
+Stratified splits are desirable in some cases, like when you’re classifying an **imbalanced dataset**, a dataset with a significant difference in the number of samples that belong to distinct classes.
