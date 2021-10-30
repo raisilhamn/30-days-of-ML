@@ -5,6 +5,7 @@
     - [Experimenting With Different Models](#experimenting-with-different-models)
     - [Example](#example)
     - [Kesimpulan](#kesimpulan)
+  - [4](#4)
 
 ## Underfitting and Overfitting
 
@@ -15,8 +16,7 @@
 Now that you have a reliable way to measure model accuracy, you can experiment with alternative models and see which gives the best predictions. But what alternatives do you have for models?
 
 You can see in scikit-learn's [documentation](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html) that the decision tree model has many options (more than you'll want or need for a long time). The most important options determine the **tree's depth**. Recall from the first lesson in this course that a tree's depth is a measure of how many splits it makes before coming to a prediction. This is a relatively shallow tree
-
-![decision_tree_reg](http://i.imgur.com/R3ywQsR.png)
+<img src="http://i.imgur.com/R3ywQsR.png" width=50% height=50%>
 
 In practice, it's not uncommon for a tree to have 10 splits between the top level (all houses) and a leaf. As the tree gets deeper, the dataset gets sliced up into leaves with fewer houses. If a tree only had 1 split, it divides the data into 2 groups. If each group is split again, we would get 4 groups of houses. Splitting each of those again would create 8 groups. If we keep doubling the number of groups by adding more splits at each level, we'll have $2^{10}$ groups of houses by the time we get to the 10th level. That's 1024 leaves.
 
@@ -101,3 +101,5 @@ Here's the takeaway: Models can suffer from either:
 - **_Underfitting_** : failing to capture relevant patterns, again leading to less accurate predictions.
 
 We use validation data, which isn't used in model training, to measure a candidate model's accuracy. This lets us try many candidate models and keep the best one.
+
+## 4
